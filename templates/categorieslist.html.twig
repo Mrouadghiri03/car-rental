@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>categories</title>
+    <link rel="stylesheet" href="{{ asset('css/categorieslist.css') }}">
+</head>
+<body>
+    <div class="container">
+    <div class="header_category">
+        <div class="add_category_div">
+            <a class="btn_add" href="{{ path('app_category_add')}}">ADD Category</a>
+        </div>
+        <div class="titre">
+            <h1>Categories List</h1>
+        </div>
+    </div>
+    
+    <div class="table_category">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th colspan="2">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for category in categories %}
+                <tr>
+                    <td>{{ category.id }}</td>
+                    <td>{{ category.name }}</td>
+                    <td>{{ category.description }}</td>
+                    <td><a href="{{ path('app_category_edit', {'id': category.id}) }}">Edit</a></td>
+                    <td><a href="{{ path('app_category_delete', {'id': category.id}) }}">Delete</a></td>
+                </tr>
+                {% else %}
+                <tr class="no-data">
+                    <td colspan="5">Aucune catégorie trouvée.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    </div>
+</body>
+</html>

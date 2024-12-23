@@ -1,0 +1,78 @@
+/* Style global */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+/* Conteneur principal */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Style du titre */
+.titre h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Style de la table des détails de la location */
+.rental_table {
+    width: 60%; /* Ajuste la largeur du tableau pour plus d'espace */
+    margin: 0 auto; /* Centre le tableau horizontalement */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Centrer le contenu des cellules (th et td) */
+table th,
+table td {
+    padding: 12px;
+    text-align: center;  /* Centre le texte horizontalement */
+    vertical-align: middle;  /* Centre le texte verticalement */
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #007BFF;
+    color: white;
+    font-weight: bold;
+    width: 30%;
+}
+
+table td {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Style de la ligne quand aucune donnée n'est trouvée (si nécessaire) */
+tbody tr.no-data td {
+    text-align: center;
+    font-style: italic;
+    color: #777;
+    background-color: #f9f9f9;
+}
+
+/* Pour une meilleure lisibilité sur mobile */
+@media (max-width: 768px) {
+    table th,
+    table td {
+        font-size: 14px;
+        padding: 8px;
+    }
+}

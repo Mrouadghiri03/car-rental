@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Customers</title>
+    <link rel="stylesheet" href="{{ asset('css/customerslist.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header_customer">
+            <div class="add_ccustomer_div">
+                <a class="btn_add" href="{{ path('app_customer_add')}}">ADD Customer</a>
+            </div>
+            <div class="titre">
+                <h1>Customers List</h1>
+            </div>
+        </div>
+    <div class="table_customers">
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th colspan="3">actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for customer in customers %}
+                <tr>
+                    <td>{{ customer.id }}</td>
+                    <td>{{ customer.name }}</td>
+                   
+                    <td><a href="{{ path('app_customer_details', {'id': customer.id}) }}">details</a></td>
+                    <td><a href="{{ path('app_customer_edit', {'id': customer.id}) }}">edit</a></td>
+                    <td><a href="{{ path('app_customer_delete', {'id': customer.id}) }}">delete</a></td>
+
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">Aucun client trouvé.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+    </div>
+</body>
+</html>

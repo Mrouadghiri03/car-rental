@@ -1,0 +1,65 @@
+/* Style global de la page */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;  /* Fond léger pour toute la page */
+    margin: 0;
+    padding: 0;
+}
+
+/* Conteneur principal */
+.container {
+    width: 80%;
+    margin: 50px auto;  /* Marge en haut et centrage automatique */
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 8px;  /* Coins arrondis */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);  /* Ombre subtile */
+}
+
+/* Titre principal */
+.titre h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Style pour chaque élément de formulaire (label, input, etc.) */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Style pour les labels */
+form label {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+/* Style pour les champs de texte (input) */
+form input, form select {
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Style du bouton de soumission */
+form button {
+    padding: 12px 20px;
+    font-size: 1rem;
+    color: white;
+    background-color: #007bff; /* Bleu pour le bouton */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+form button:hover {
+    background-color: #0056b3; /* Changement de couleur au survol */
+}

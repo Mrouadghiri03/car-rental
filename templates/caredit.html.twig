@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Car</title>
+    <link rel="stylesheet" href="{{ asset('css/caredit.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="titre">
+            <h1>Edit Car</h1>
+        </div>
+        <form action="{{ path('app_car_edit', { id: car.id }) }}" method="POST">
+            <label for="brand">Brand:</label>
+            <input type="text" id="brand" name="brand" value="{{ car.brand }}" required><br>
+
+            <label for="model">Model:</label>
+            <input type="text" id="model" name="model" value="{{ car.model }}" required><br>
+
+            <label for="year">Year:</label>
+            <input type="text" id="year" name="year" value="{{ car.year }}" required><br>
+
+            <label for="priceperday">Daily Price for Rent:</label>
+            <input type="number" id="priceperday" name="priceperday" value="{{ car.priceperday }}" required><br>
+
+            <label for="category">Category:</label>
+            <select id="category" name="category_id" required>
+                <option value="" disabled>Select a Category</option>
+                {% for category in categories %}
+                    <option value="{{ category.id }}" {% if category.id == car.category.id %}selected{% endif %}>
+                        {{ category.name }}
+                    </option>
+                {% endfor %}
+            </select>
+
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
+</body>
+</html>

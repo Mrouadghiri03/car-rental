@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Car</title>
+    <link rel="stylesheet" href="{{ asset('css/addcar.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="titre">
+            <h1>Add New Car</h1>
+        </div>
+        <form action="{{ path('app_car_create') }}" method="POST">
+            <label for="brand">Brand:</label>
+            <input type="text" id="brand" name="brand" required><br>
+
+            <label for="model">Model:</label>
+            <input type="text" id="model" name="model" required><br>
+
+            <label for="year">Year:</label>
+            <input type="text" id="year" name="year" required><br>
+
+            <label for="priceperday">Daily Price for Rent:</label>
+            <input type="number" id="priceperday" name="priceperday" required>
+
+            <label for="category">Category:</label>
+            <select id="category" name="category_id" required>
+                <option value="" disabled selected>Select a Category</option>
+                {% for category in categories %}
+                    <option value="{{ category.id }}">{{ category.name }}</option>
+                {% endfor %}
+            </select>
+            
+            <button type="submit">Add Car</button>
+        </form>
+    </div>
+</body>
+</html>

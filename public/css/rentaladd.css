@@ -1,0 +1,69 @@
+/* Section du titre principal en haut de la page */
+.page-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Style pour le titre principal de la page */
+.page-title h1 {
+    font-size: 3rem;
+    color: #333;
+    font-weight: bold;
+}
+
+/* Conteneur principal */
+.container {
+    width: 80%;
+    margin: 40px auto;  /* Marge en haut et centrage automatique */
+    padding: 20px;
+    background-color: #f0f8ff;  /* Couleur de fond douce (vous pouvez changer cette couleur) */
+    border-radius: 10px;  /* Coins arrondis */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Légère ombre autour du conteneur */
+}
+
+/* Style pour chaque section de formulaire */
+.form-group {
+    margin-bottom: 20px;  /* Espace entre les éléments */
+}
+
+/* Style pour le titre du formulaire */
+.titre h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Style pour les labels */
+.form-group label {
+    display: block;
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+/* Style pour les champs de formulaire (input, select) */
+.form-group input, 
+.form-group select {
+    padding: 12px;
+    font-size: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Style pour le bouton de soumission */
+.form-group button {
+    padding: 12px 20px;
+    font-size: 1rem;
+    color: white;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form-group button:hover {
+    background-color: #0056b3;
+}

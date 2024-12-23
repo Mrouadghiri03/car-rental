@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu</title>
+    <link rel="stylesheet" href="{{ asset('css/principale.css') }}">
+</head>
+<body>
+    <div class="titre">
+        <h1>Location</h1>
+    </div>
+    <div class="button-container">
+    <div class="cars_div">
+        <a href="{{ path('app_cars') }}">cars</a>
+    </div>
+    <div class="customers_div">
+        <a href="{{ path('app_customers') }}">customers</a>
+    </div>
+    <div class="categories_div">
+        <a href="{{ path('app_categories') }}">categories</a>
+    </div>
+    <div class="rentals_div">
+        <a href="{{ path('app_rentals') }}">rentals</a>
+    </div>
+    </div>
+</body>
+</html>

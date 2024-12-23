@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Rental</title>
+    <link rel="stylesheet" href="{{ asset('css/rentaledit.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="titre">
+            <h1>Edit Rental</h1>
+        </div>
+        <form action="{{ path('app_rentals_edit', { id: rental.id }) }}" method="POST">
+            <label for="rental_date">Rental Date:</label>
+            <input type="date" id="rental_date" name="rental_date" value="{{ rental.rentaldate|date('Y-m-d') }}" required><br>
+
+            <label for="return_date">Return Date:</label>
+            <input type="date" id="return_date" name="return_date" value="{{ rental.returndate|date('Y-m-d') }}" required><br>
+
+            <label for="car_id">Car:</label>
+            <select id="car" name="car_id" required>
+                <option value="" disabled selected>Select a car</option>
+                {% for car in cars %}
+                    <option value="{{ car.id }}" {% if car.id == rental.car.id %}selected{% endif %}>{{ car.model }} || {{ car.brand }}</option>
+                {% endfor %}
+            </select><br>
+
+            <label for="customer_id">Customer:</label>
+            <select id="customer" name="customer_id" required>
+                <option value="" disabled selected>Select a customer</option>
+                {% for customer in customers %}
+                    <option value="{{ customer.id }}" {% if customer.id == rental.customer.id %}selected{% endif %}>{{ customer.name }}</option>
+                {% endfor %}
+            </select><br>
+
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
+</body>
+</html>

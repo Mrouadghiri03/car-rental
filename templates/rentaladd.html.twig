@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Rental</title>
+    <link rel="stylesheet" href="{{ asset('css/rentaladd.css') }}">
+
+</head>
+<body>
+    <div class="container">
+        
+        <!-- Section Titre spécifique du formulaire -->
+        <div class="titre">
+            <h1>Add New Rental</h1>
+        </div>
+        
+        <!-- Formulaire de location -->
+        <form action="{{ path('app_rental_create') }}" method="POST">
+            
+            <!-- Section pour la date de début -->
+            <div class="form-group">
+                <label for="rental_date">Start rental date:</label>
+                <input type="date" id="rental_date" name="rental_date" required>
+            </div>
+
+            <!-- Section pour la date de fin -->
+            <div class="form-group">
+                <label for="return_date">End rental date:</label>
+                <input type="date" id="return_date" name="return_date" required>
+            </div>
+
+            <!-- Section pour sélectionner une voiture -->
+            <div class="form-group">
+                <label for="car">Select a car:</label>
+                <select id="car" name="car_id" required>
+                    <option value="" disabled selected>Select a car</option>
+                    {% for car in cars %}
+                        <option value="{{ car.id }}">{{ car.model }} || {{ car.brand }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Section pour sélectionner un client -->
+            <div class="form-group">
+                <label for="customer">Select a customer:</label>
+                <select id="customer" name="customer_id" required>
+                    <option value="" disabled selected>Select a customer</option>
+                    {% for customer in customers %}
+                        <option value="{{ customer.id }}">{{ customer.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <!-- Bouton de soumission -->
+            <div class="form-group">
+                <button type="submit">Add Rental</button>
+            </div>
+
+        </form>
+    </div>
+</body>
+</html>

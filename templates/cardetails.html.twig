@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car details</title>
+    <link rel="stylesheet" href="{{ asset('css/cardetails.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="titre">
+            <h1>car details</h1>
+        </div>    
+        <div class="car_table">
+            <table>
+    <tr>
+        <th>ID</th>
+        <td>{{ car.id }}</td>
+    </tr>
+    <tr>
+        <th>Model</th>
+        <td>{{ car.model }}</td>
+    </tr>
+    <tr>
+        <th>Brand</th>
+        <td>{{ car.brand }}</td>
+    </tr>
+    <tr>
+        <th>Year</th>
+        <td>{{ car.year }}</td>
+    </tr>
+    <tr>
+        <th>Daily price for rent</th>
+        <td>{{ car.priceperday }}</td>
+    </tr>
+    <tr>
+        <th>Car category</th>
+        <td>{{ car.category.name }}</td>
+    </tr>
+    <!-- Ajoutez d'autres champs selon votre entité customer -->
+</table>
+</body>

@@ -1,0 +1,53 @@
+/* Style global du container */
+.container {
+    max-width: 100%;       /* Assure que la largeur ne dépasse pas la taille de la page */
+    width: 90%;            /* Largeur de 90% de la page (proportionnel) */
+    margin: 40px auto;
+    padding: 30px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Titre de la page */
+.titre h1 {
+    font-size: 24px;
+    color: #333;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Style des labels et champs de formulaire */
+label {
+    font-weight: bold;
+    margin-bottom: 8px;
+    display: block;
+    color: #333;
+}
+
+input[type="text"], button {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Style du bouton */
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Ajustement des marges pour les petits écrans */
+@media (max-width: 768px) {
+    .container {
+        width: 95%; /* Ajuste la largeur pour les écrans plus petits */
+    }
+}

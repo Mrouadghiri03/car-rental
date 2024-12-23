@@ -1,0 +1,126 @@
+/* Style global */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+/* Conteneur principal avec un espace en haut */
+.header_car {
+    display: flex;
+    justify-content: center;  /* Centre horizontalement le contenu principal */
+    align-items: center;     /* Centre verticalement */
+    margin-top: 30px;  /* Espace en haut */
+    padding-left: 20px;
+    padding-right: 20px;
+    height: 15vh;  /* Prend toute la hauteur de la page pour centrer verticalement */
+    flex-direction: column;  /* Arrange les éléments en colonne */
+    text-align: center;
+}
+
+/* Conteneur du bouton d'ajout de voiture */
+.add_car_div {
+    width: 100%;
+    text-align: left;  /* Aligne le bouton à gauche */
+    padding-left: 20px;  /* Espace à gauche */
+    margin-bottom: 20px;
+}
+
+.add_car_div a {
+    background-color: #02c51f;
+    color: white;
+    padding: 12px 25px;  /* Ajuste le padding pour rendre le bouton plus visible */
+    font-size: 1.2rem;
+    text-decoration: none;
+    margin-top: 30px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.add_car_div a:hover {
+    background-color: #066a22;
+}
+
+/* Style du titre de la page */
+.titre h1 {
+    font-size: 2.5rem;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Style du tableau */
+.table_cars {
+    width: 80%;  /* Réduit la largeur du tableau */
+    margin: 0 auto;  /* Centre le tableau */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th,
+table td {
+    padding: 12px;
+    text-align: center;  /* Centre horizontalement */
+    vertical-align: middle;  /* Centre verticalement */
+    border-bottom: 1px solid #ddd;
+}
+
+table th {
+    background-color: #ff9100;
+    color: white;
+    font-weight: bold;
+}
+
+table td {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+table td a {
+    color: #ff9100;
+    text-decoration: none;
+    padding: 5px;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+}
+
+table td a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Style de la ligne quand aucune voiture n'est trouvée */
+tbody tr.no-data td {
+    text-align: center;
+    font-style: italic;
+    color: #777;
+    background-color: #f9f9f9;
+}
+
+/* Pour rendre la page responsive */
+@media (max-width: 768px) {
+    .header_car {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .add_car_div {
+        margin-bottom: 10px;
+    }
+
+    table {
+        font-size: 14px;
+        width: 90%;  /* Réduit encore la largeur du tableau sur mobile */
+    }
+}

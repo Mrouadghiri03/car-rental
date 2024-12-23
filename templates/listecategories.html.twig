@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Liste des categories</title>
+</head>
+<body>
+    <h1>Liste des categories</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nom</th>
+                <th colspan="3">actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for category in categories %}
+                <tr>
+                    <td>{{ category.id }}</td>
+                    <td>{{ category.name }}</td>
+                    <td>{{ category.description }}</td>
+
+                <td><a href="{{ path('app_category_delete', {'id': category.id}) }}">delete</a></td>
+                   
+
+                    
+
+                
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="3">Aucun client trouvé.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
