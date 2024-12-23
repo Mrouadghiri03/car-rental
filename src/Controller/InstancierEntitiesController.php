@@ -74,11 +74,11 @@ class InstancierEntitiesController extends AbstractController
         $customer1->setPhone("+2126547200");
 
         $customer2 = new Customer();
-        $customer2->setName("Brahim");
-        $customer2->setEmail("brhimouadghiri61@gmail.com");
-        $customer2->setAddress("76 rue oujda, madagh");
-        $customer2->setLicencenumber("FE4949");
-        $customer2->setPhone("+21268534373");
+        $customer2->setName("soukayna");
+        $customer2->setEmail("mrouadghiri03@gmail.com");
+        $customer2->setAddress("26 Rue figuig hay el qods Berkane");
+        $customer2->setLicencenumber("FA216294");
+        $customer2->setPhone("+212687069236");
 
         // Persistance des clients
         $entityManager->persist($customer1);
