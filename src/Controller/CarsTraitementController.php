@@ -12,6 +12,7 @@ use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Rental;
 use Symfony\Component\HttpFoundation\Request;
+use App\Form\CarFormType;
 
 
 class CarsTraitementController extends AbstractController
@@ -107,8 +108,8 @@ class CarsTraitementController extends AbstractController
         return $this->redirectToRoute('app_cars'); // Redirection vers la liste des catégories
     }
     #[Route('/car/edit/{id}', name: 'app_car_edit')]
-public function editCar(int $id, Request $request, CarRepository $carRepository, EntityManagerInterface $entityManager): Response
-{
+    public function editCar(int $id, Request $request, CarRepository $carRepository, EntityManagerInterface $entityManager): Response
+    {
     $car = $carRepository->find($id);
 
     if (!$car) {
@@ -142,5 +143,35 @@ public function editCar(int $id, Request $request, CarRepository $carRepository,
         'categories' => $categories,
     ]);
 }
+
+    #[Route('/car/new_form', name: 'app_car_new_form')]
+    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        // Créer une nouvelle instance de l'entité car
+        $car = new Car();
+
+        // Créer le formulaire pour l'entité car
+        $form = $this->createForm(carFormType::class, $car);
+
+        // Traiter la requête (si le formulaire a été soumis)
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Sauvegarder l'entité car dans la base de données
+            $entityManager->persist($car);
+            $entityManager->flush();
+
+            // Ajouter un message flash pour notifier que l'entité a été enregistrée
+            $this->addFlash('success', 'car created successfully!');
+
+            // Rediriger vers la liste des catégories (ou une autre page)
+            return $this->redirectToRoute('app_cars');
+        }
+
+        // Rendre la vue avec le formulaire
+        return $this->render('new_form_car.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
 
 }

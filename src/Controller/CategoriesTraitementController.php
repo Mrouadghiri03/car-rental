@@ -11,7 +11,7 @@ use app\Entity\Rental;
 use App\Repository\CategoryRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
-
+use App\Form\CategoryFormType;
 use Symfony\Component\HttpFoundation\Request;
 
 
@@ -121,6 +121,35 @@ public function editCar(int $id, Request $request, CategoryRepository $categoryR
         'category' => $category,
     ]);
 }
+    #[Route('/category/new_form', name: 'app_category_new_form')]
+    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        // Créer une nouvelle instance de l'entité Category
+        $category = new Category();
+
+        // Créer le formulaire pour l'entité Category
+        $form = $this->createForm(CategoryFormType::class, $category);
+
+        // Traiter la requête (si le formulaire a été soumis)
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Sauvegarder l'entité Category dans la base de données
+            $entityManager->persist($category);
+            $entityManager->flush();
+
+            // Ajouter un message flash pour notifier que l'entité a été enregistrée
+            $this->addFlash('success', 'Category created successfully!');
+
+            // Rediriger vers la liste des catégories (ou une autre page)
+            return $this->redirectToRoute('app_categories');
+        }
+
+        // Rendre la vue avec le formulaire
+        return $this->render('new_form_category.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
 
 }
 

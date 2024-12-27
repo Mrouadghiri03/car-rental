@@ -15,7 +15,7 @@ class InterfacesTraitementController extends AbstractController
             'controller_name' => 'InterfacesTraitementController',
         ]);
     }
-    #[Route('/principale', name: 'app_principale')]
+    #[Route('', name: 'app_principale')]
     public function principale(): Response
     {
         return $this->render('principale.html.twig', [

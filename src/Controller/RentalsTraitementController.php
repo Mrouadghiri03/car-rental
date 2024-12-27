@@ -11,7 +11,7 @@ use App\Repository\RentalRepository;
 use App\Repository\CarRepository;
 use App\Repository\CustomerRepository;
 use Symfony\Component\HttpFoundation\Request;
-
+use App\Form\RentalFormType;
 use App\Entity\Rental;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
@@ -168,5 +168,63 @@ class RentalsTraitementController extends AbstractController
         ]);
     }
     
+    #[Route('/rental/new_form', name: 'app_rental_new_form')]
+    public function new(Request $request, EntityManagerInterface $entityManager): Response
+    {
+        $rental = new Rental();
+
+        // Créer le formulaire de location
+        $form = $this->createForm(RentalFormType::class, $rental);
+    
+        // Si le formulaire est soumis et valide
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            // Récupérer les données du formulaire
+            $rental = $form->getData();
+            $rental->setActuelreturndate(new DateTime());
+            // Calculer la durée de la location et le retard
+            $currentReturnDate = new \DateTime(); // La date actuelle
+            $returnDate = $rental->getReturnDate();
+            $rentalDate = $rental->getRentalDate();
+        
+
+            if ($currentReturnDate > $returnDate) {
+                // Calcul du retard
+                $rental->setLate(true);
+                $intervalTotal = $currentReturnDate->diff($returnDate);
+                $intervalInitial = $returnDate->diff($rentalDate);
+
+                $daysLate = $intervalTotal->days;
+                $daysInitial = $intervalInitial->days;
+
+                // Calcul du coût total avec supplément pour les jours de retard
+                $car = $rental->getCar();
+                $totalCost = ($daysLate * ($car->getPriceperday() + 50)) + ($daysInitial * $car->getPriceperday());
+                $rental->setTotalcost($totalCost);
+            } 
+            else {
+                // Pas de retard, juste le coût de la location initiale
+                $rental->setLate(false);
+                $intervalInitial = $returnDate->diff($rentalDate);
+                $daysInitial = $intervalInitial->days;
+
+                $car = $rental->getCar();
+                $rental->setTotalcost($daysInitial * $car->getPriceperday());
+            }
+
+            // Persister l'entité Rental
+            $entityManager->persist($rental);
+            $entityManager->flush();
+
+            // Rediriger vers la liste des locations après la création
+            return $this->redirectToRoute('app_rentals');
+        }
+
+        // Rendre la vue avec le formulaire
+        return $this->render('new_form_rental.html.twig', [
+            'form' => $form->createView(),
+        ]);
     }
+}
     
